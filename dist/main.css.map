@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":"AAAA,gEAEoB;AAFpB;EAAA,gBAEoB;AAAA;AAFpB;EAAA,aAEoB;AAAA;AAFpB;EAAA,mBAEoB;AAAA;AAFpB;EAAA,+BAEoB;AAAA,C","sources":["webpack://react-practice/./src/css/main.css"],"sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;"],"names":[],"sourceRoot":""}

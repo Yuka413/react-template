@@ -1,0 +1,15 @@
+/*! tailwindcss v4.1.5 | MIT License | https://tailwindcss.com */
+.static {
+  position: static;
+}
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.underline {
+  text-decoration-line: underline;
+}
+
+/*# sourceMappingURL=main.css.map*/
