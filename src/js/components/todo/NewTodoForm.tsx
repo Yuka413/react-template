@@ -1,12 +1,12 @@
 import * as React from "react";
 import { TextField } from "../parts/TextField";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Todo } from "./type";
+import { Todo } from "../../types/todo";
 import { Button } from "../parts/Button";
 
 // App.tsxで定義しているsetTodoListを受け取れるようにしないとエラーが出るので、Propsを追加
 type Props = {
-  addTodo: (newTask: string, newPerson: string, newDeadline: string) => void
+  addTodo: (newTask: string, newPerson: string, newDeadline: string) => void;
 };
 
 export const NewTodoForm = ({ addTodo }: Props) => {
@@ -14,7 +14,7 @@ export const NewTodoForm = ({ addTodo }: Props) => {
   const [newPerson, setNewPerson] = useState<string>("");
   const [newDeadline, setNewDeadline] = useState<string>("");
 
-	// 追加ボタンを押した時の関数
+  // 追加ボタンを押した時の関数
   const addNewTodo = () => {
     addTodo(newTask, newPerson, newDeadline);
     setNewTask("");
@@ -52,4 +52,3 @@ export const NewTodoForm = ({ addTodo }: Props) => {
     </div>
   );
 };
-

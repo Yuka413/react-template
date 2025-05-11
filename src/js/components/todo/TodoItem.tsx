@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Todo } from "./type";
 import { Button } from "../parts/Button";
-import { Dispatch, FC, SetStateAction } from "react";
+import { useAuth } from "../../hook/use-auth";
+import { memo } from "react";
 
 // TodoItemPropsという型を定義し、taskとdeadlineプロパティが文字列型であることを示す。
 type Props = {
@@ -12,11 +12,13 @@ type Props = {
   deleteTodo: (id: number) => void;
 };
 // TodoItemコンポーネントはこれらのプロパティを受け取り、それらを表示する。
-export const TodoItem = ({ id, task, person, deadline, deleteTodo }: Props) => {
+export const TodoItem = memo(({ id, task, person, deadline, deleteTodo }: Props) => {
+  const { userName } = useAuth();
+  const style = userName === person ? "text-red-600 font-bold" : "";
   return (
     <li className="grid grid-cols-4 mt-1">
       <div>{task}</div>
-      <div>{person}</div>
+      <div className={style}>{person}</div>
       <div>{deadline}</div>
       <div>
         <Button color="red" onClick={() => deleteTodo(id)}>
@@ -25,4 +27,4 @@ export const TodoItem = ({ id, task, person, deadline, deleteTodo }: Props) => {
       </div>
     </li>
   );
-};
+});

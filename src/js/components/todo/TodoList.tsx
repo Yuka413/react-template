@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TodoItem } from "./TodoItem";
-import { Todo } from "./type";
+import { Todo } from "../../types/todo";
 import { Dispatch, SetStateAction } from "react";
 
 type Props = {
