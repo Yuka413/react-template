@@ -13,33 +13,39 @@ export const useTodoList = () => {
     }
   }, []);
 
-  // todoListが更新されるたびに、LocalStorageにデータを保存する
-  useEffect(() => {
-    localStorage.setItem("todo-list", JSON.stringify(todoList));
-  }, [todoList]); //依存配列
 
   const addTodo = (newTask: string, newPerson: string, newDeadline: string) => {
-    setTodoList((prev: Todo[]) => [
-      ...prev,
+    const updateTodoList = [
+      ...todoList,
       {
-        id: Date.now(),
+				// もともとid:number型で使用していたが、id:stringにしたので、Date.nowの値をstring型にする
+        id: Date.now().toString(),
         task: newTask,
         person: newPerson,
         deadline: newDeadline,
       },
-    ]);
+    ];
+		localStorage.setItem("todo-list", JSON.stringify(updateTodoList))
+    setTodoList(updateTodoList);
   };
 
-  const deleteTodo = useCallback(
-    (id: number) =>
-      setTodoList((prev) => prev.filter((todo) => todo.id !== id)),
-    [],
-  );
+  const deleteTodo =
+    (id: string) =>
+			{
+				const updateTodoList = todoList.filter((todo) => todo.id !== id)
+				localStorage.setItem("todo-list", JSON.stringify(updateTodoList));
+				setTodoList(updateTodoList);
+			}
 
-  const filterTodoList = useMemo(() => (todoList.filter(
-    (todo) =>
-      todo.task.includes(filterWord) || todo.person.includes(filterWord),
-  )),[filterWord, todoList]);
+
+  const filterTodoList = useMemo(
+    () =>
+      todoList.filter(
+        (todo) =>
+          todo.task.includes(filterWord) || todo.person.includes(filterWord),
+      ),
+    [filterWord, todoList],
+  );
 
   return {
     todoList: filterTodoList,

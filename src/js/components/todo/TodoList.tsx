@@ -1,17 +1,17 @@
 import * as React from "react";
 import { TodoItem } from "./TodoItem";
 import { Todo } from "../../types/todo";
-import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   todoList: Todo[];
-  deleteTodo: (id: number) => void;
+  deleteTodo: (id: string) => void;
 };
 
-export const TodoList = ({ todoList, deleteTodo }: Props) => {
+export const TodoTable = ({ todoList, deleteTodo }: Props) => {
   return (
     <ul className="bg-sky-500/50  mt-8 max-w-xl m-auto py-2">
-      <li className="grid grid-cols-4 font-bold p-2 ">
+      <li className="grid grid-cols-5 font-bold p-2 ">
+        <div>ID</div>
         <div>タスク名</div>
         <div>担当者名</div>
         <div>締切</div>
